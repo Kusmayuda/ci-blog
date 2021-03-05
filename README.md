@@ -1,2 +1,0 @@
-# ci-blog
-Website Blog
