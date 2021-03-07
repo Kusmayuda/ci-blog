@@ -54,7 +54,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 // Admin
 $route['login_admin'] = 'AdminController/login';
 $route['proseslogin_admin'] = 'AdminController/proseslogin_admin';
-$route['admin/index'] = 'AdminController/Ke_HalamanAdmin';
+$route['admin/(:any)'] = 'AdminController/Ke_HalamanAdmin/$1';
 
 // Penulis
 $route['penulis/index'] = 'AdminController/Ke_HalamanPenulis';

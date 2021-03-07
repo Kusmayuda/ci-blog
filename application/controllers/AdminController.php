@@ -3,13 +3,31 @@ class AdminController extends CI_Controller
 {
   // Ke Halaman
 
-  public function Ke_HalamanAdmin()
+  public function Ke_HalamanAdmin($page)
   {
-    $data['judul'] = "Halaman Admin";
+    // Load Model
+    $this->load->model('M_kategori');
+    // Cek ada file di views yang sesuai dengan yang diakses
+    if ($this->load->view('back/admin/' . $page, '', true) === '') { // jika tidak
+      echo "Terjadi Kesalahan";
+    } else { // jika ada
+      $judul = '';
 
-    $this->load->view('back/template/header', $data);
-    $this->load->view('back/admin/index', $data);
-    $this->load->view('back/template/footer', $data);
+      if ($page === "index") :
+        $judul = 'Dashboard';
+      // elseif ($page === "kelola_kategori") :
+      //   $judul = 'Kelola Kategori';
+      else :
+        $judul = ucfirst(str_replace('_', ' ', $page));
+      endif;
+
+      $data['kategori'] = $this->M_kategori->get()->result();
+      $data['judul'] = "Halaman " . $judul;
+
+      $this->load->view('back/template/header', $data);
+      $this->load->view('back/admin/' . $page, $data);
+      $this->load->view('back/template/footer', $data);
+    }
   }
 
   public function Ke_HalamanPenulis()
