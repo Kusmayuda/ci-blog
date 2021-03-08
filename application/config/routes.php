@@ -56,6 +56,14 @@ $route['login_admin'] = 'AdminController/login';
 $route['proseslogin_admin'] = 'AdminController/proseslogin_admin';
 $route['admin/(:any)'] = 'AdminController/Ke_HalamanAdmin/$1';
 
+// Tambah
+$route['tambah/kategori'] = 'kategori/tambah';
+// Hapus
+$route['hapus/kategori/(:num)'] = 'kategori/hapus/$1';
+
+// Edit
+$route['edit/kategori/(:num)'] = 'kategori/edit/$1';
+
 // Penulis
 $route['penulis/index'] = 'AdminController/Ke_HalamanPenulis';
 
